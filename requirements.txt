@@ -1,0 +1,14 @@
+asgiref==3.5.0
+autoflake==1.4
+autopep8==1.6.0
+Django==4.0.3
+django-debug-toolbar==3.2.4
+docformatter==1.4
+Pillow==9.0.1
+pycodestyle==2.8.0
+pyflakes==2.4.0
+pyformat==0.7
+sqlparse==0.4.2
+toml==0.10.2
+unify==0.5
+untokenize==0.1.1

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ category }} :: Новости
+{% endblock %}
+
+{% block news %}
+</nav>
+<div class="container mt-3">
+  <div style="margin: 1.5%; margin-left: 25.5%;">
+<div class="cat">
+  <h3>{{ category }}</h3>
+</div>
+  </div>    
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}      
+{% endblock %}
+{% block content %}
+<div class="col-md-8">
+  {% for item in news %}
+  <div class="card mb-3">
+  <div class="card-header">
+  </div>
+
+    <div class="card-body">
+    <div class="media">
+      
+      {% if item.photo %}
+        <img src="{{ item.photo.url }}" alt="" width="50%" class="me-3 float-start" >
+      {% else %}
+      <img src="https://picsum.photos/seed/picsum/536/354" alt="" width="50%"  class="me-3 float-start">
+      {% endif %}
+      <div class="media-body">
+        
+        <h4><a href="{{ item.get_absolute_url }}" class="card-title">{{ item.title }}</a></h4>
+          <p> <a href="{{ item.get_absolute_url }}" class="card-text" >{{ item.content|linebreaks|truncatechars:290 }}</a></p>
+          <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Читать далее</a>
+      </div>
+    </div>
+    </div>
+  <div class="card-footer text-muted">
+  {{ item.created_at }}
+  </div>
+</div>
+{% endfor %}            
+</div>
+{% endblock %}
+
+      
+             
+              
+             
+

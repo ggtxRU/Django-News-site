@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+Добавление новости ::
+
+{% endblock %}
+
+{% block news %}
+
+<div class="container mt-3">
+  <div style="margin: 1.5%; margin-left: 25.5%;">
+  <h1>Добавление новости</h1>
+  </div>    
+{% endblock %}
+
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}    
+{% endblock %}
+
+
+{{ form.non_field.errors }}
+{% block content %}
+<div class="col-md-8">
+<form action="{% url 'add_news' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="submit">Добавить новость</button>
+    </div>
+</form>
+</div>
+{% endblock %}

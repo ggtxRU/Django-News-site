@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ title }} ::
+
+{% endblock %}
+
+{% block news %}
+
+<div class="container mt-3">
+  <div style="margin: 1.5%; margin-left: 25.5%;">
+  <h1>Последние новости дня в России</h1>
+  <h5 class="pre-title">Самые свежие и актуальные последние новости России. Срочные сообщения из регионов, события, происшествия</h5>
+  </div>    
+{% endblock %}
+
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}    
+{% endblock %}
+
+
+
+{% block content %}
+<div class="col-md-8">
+  {% for item in news %}
+  <div class="card mb-4">
+  <div class="card-header">
+      <p><h5><a href="{% url 'category' item.category.pk %}">{{ item.category }}</a></h5></p>
+  </div>
+
+    <div class="card-body">
+    <div class="media">
+      
+      {% if item.photo %}
+        <img src="{{ item.photo.url }}" alt="" width="50%" class="float-start me-3" >
+      {% else %}
+      <img src="https://picsum.photos/seed/picsum/536/354" alt="" width="50%"  class="float-start mr-3">
+      {% endif %}
+      <div class="media-body">
+        
+          <h4><a href="{{ item.get_absolute_url }}" class="card-title">{{ item.title }}</a></h4>
+          <p> <a href="{{ item.get_absolute_url }}" class="card-text" >{{ item.content|linebreaks|truncatechars:290 }}</a></p>
+      </div>
+    </div>
+    </div>
+  <div class="card-footer text-muted">
+  {{ item.created_at }}
+  </div>
+</div>
+{% endfor %}            
+</div>
+{% endblock %}

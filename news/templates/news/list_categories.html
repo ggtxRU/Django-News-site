@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        {% for item in categories %}
+            <a href="{{ item.get_absolute_url }}" class="list-group-item list-group-item-action" style="right: 35%; top: -40px; padding: 15px; background-color: ghostwhite;">
+            {{ item.title}}</a>
+         {% endfor %}
+        </div>
+    </div>           
+
+    <!-- {% url 'category' item.pk %} -->
